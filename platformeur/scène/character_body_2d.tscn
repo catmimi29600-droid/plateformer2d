@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://be2858tm3a1rf"]
+
+[ext_resource type="Texture2D" uid="uid://c1lrti56ksvge" path="res://asset/New Piskel.png" id="1_erb07"]
+[ext_resource type="Script" uid="uid://bavll757nmu1b" path="res://scène/player.gd" id="2_player"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ms0al"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_erb07")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pvfm"]
+size = Vector2(19, 50)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("2_player")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ms0al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 7)
+shape = SubResource("RectangleShape2D_2pvfm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, 7)
+shape = SubResource("RectangleShape2D_2pvfm")
